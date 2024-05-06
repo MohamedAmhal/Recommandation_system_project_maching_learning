@@ -1,0 +1,171 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <style>
+        input[type="range"] {
+        -webkit-appearance: none;
+        margin-right: 15px;
+        height: 7px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 5px;
+        background-image: linear-gradient(#3bb77e, #3bb77e);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: #3bb77e;
+        cursor: ew-resize;
+        box-shadow: 0 0 2px 0 #555;
+        transition: background .3s ease-in-out;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track  {
+        -webkit-appearance: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        }
+    </style>
+
+</head>
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> Shop <span></span> Recommandation Product
+                </div>
+            </div>
+        </div>
+        <div class="container mb-30 mt-30">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shop-product-fillter-header">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-5 mb-sm-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="shop-product-fillter">
+                        <style>
+                            .totall-product p {
+                                font-size: 30px; /* Adjust the font size as needed */
+                            }
+                        </style>
+                        
+                        <div class="totall-product">
+                            <p>10 <strong class="text-brand">Products</strong> Recommended for you!</p>
+                        </div>
+                        <div class="sort-by-product-area">
+                            <div class="sort-by-cover mr-10">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps"></i>Show:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> 50 <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">50</a></li>
+                                        <li><a href="#">100</a></li>
+                                        <li><a href="#">150</a></li>
+                                        <li><a href="#">200</a></li>
+                                        <li><a href="#">All</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sort-by-cover">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active" href="#">Featured</a></li>
+                                        <li><a href="#">Price: Low to High</a></li>
+                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a href="#">Release Date</a></li>
+                                        <li><a href="#">Avg. Rating</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row product-grid" id="filtered-product">
+                        {% for p in filtered_products %}
+
+                        <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom">
+                                        <a href="{% url 'product-detail' p.Product_ID %}">
+                                            <img class="{% url 'product-detail' p.Product_ID %}" src="{{ p.Product_image }}" alt="" />
+                                            <img class="{% url 'product-detail' p.Product_ID %}" src="{{ p.Product_image }}" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Add To Wishlist" class="action-btn" href=""><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Compare" class="action-btn" href=""><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                    </div>
+                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                        <span class="hot">-50%</span>
+                                    </div>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-category">
+                                        <a href="">ELectro</a>
+                                    </div>
+                                    <h2><a href="{% url 'product-detail' p.Product_ID %}">{{ p.Product_name }}</a></h2>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width: 90%"></div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                    </div>
+                                    <div>
+                                        <span class="font-small text-muted">By <a href="">ENSATE</a></span>
+                                    </div>
+                                    <div class="product-card-bottom">
+                                        <div class="product-price">
+                                            <span>MAD{{ p.Price }}</span>
+                                            <span class="old-price"> MAD0 </span>
+                                        </div>
+                                        <div class="add-cart">
+                                            <a class="add" href=""><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!--end product card-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}
+  

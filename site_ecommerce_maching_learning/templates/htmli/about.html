@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+    <main class="main pages">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> Pages <span></span> About us
+                </div>
+            </div>
+        </div>
+        <div class="page-content pt-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-10 col-lg-12 m-auto">
+                        <section class="row align-items-center mb-50">
+                            <div class="col-lg-6">
+                                <img src="{% static 'assets/imgs/equipe/ecommerce.png' %}" alt="" class="border-radius-15 mb-md-3 mb-lg-0 mb-sm-4" />
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="pl-25">
+                                    <h2 class="mb-30">Welcome to E-commerce Web Site</h2>
+                                    <p class="mb-25">Bienvenue dans notre boutique en ligne, où chaque visite est une expérience unique et personnalisée. Plongez dans un monde de choix infinis, où chaque produit est soigneusement sélectionné pour répondre à vos besoins et préférences.</p>
+                                    <p class="mb-50">Notre système de recommandation révolutionnaire utilise une technologie avancée d'apprentissage automatique pour comprendre vos goûts et vos habitudes d'achat. En analysant vos interactions passées avec notre site, ainsi que vos achats précédents, il est en mesure de vous proposer des produits qui correspondent parfaitement à vos attentes.</p>
+                                    <div class="carausel-3-columns-cover position-relative">
+                                        <div id="carausel-3-columns-arrows"></div>
+                                        <div class="carausel-3-columns" id="carausel-3-columns">
+                                            <img src="{% static 'assets/imgs/equipe/photo_de_pro.jpeg' %}" alt="" />
+                                            <img src="{% static 'assets/imgs/equipe/ahmed.png' %}" alt="" />
+                                            <img src="{% static 'assets/imgs/equipe/walid.jpeg' %}" alt="" />
+                                            <img src="{% static 'assets/imgs/equipe/zaka.jpeg' %}" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
