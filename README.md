@@ -27,7 +27,6 @@ Ce projet est une implémentation d'un système de recommandation utilisant des 
 
 ### site_ecommerce_maching_learning/
     Le dossier contient une application web développée avec Django pour un système de recommandation sur un site e-commerce. L'application offre une interface utilisateur permettant aux utilisateurs de découvrir des produits recommandés en fonction de leurs préférences. Elle inclut des fonctionnalités telles que la page d'accueil, les recommandations personnalisées et les détails des produits.
-
 ### datasets/
    Le dossier `datasets/` contient trois ensembles de données distincts :
 	- **Movies** : Un ensemble de données sur les films, comprenant des informations telles que les titres, les genres, les années de sortie et les évaluations.
